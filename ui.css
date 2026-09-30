@@ -5,6 +5,7 @@ button {
 
 .calc {
     background-color: #ecf0f1;
+
     padding: 1rem;
     display: flex;
     flex-direction: column;

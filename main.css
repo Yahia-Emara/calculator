@@ -40,9 +40,29 @@ footer a:hover {
 }
 
 main {
+    position: relative;
+    overflow: hidden;
     background-color: #686de0;
     flex: 1;
     display: flex;
     justify-content: center;
     align-items: center;
+    isolation: isolate;
+}
+
+main::before {
+    content: "";
+    position: absolute;
+    top: -30%;
+    left: -30%;
+    width: 160%;
+    height: 160%;
+    background-image: url("./assets/pattern.svg"), url("./assets/pattern.svg");
+    background-position: 0 0, 5rem 5rem; 
+    background-size: 10rem 10rem; 
+    background-repeat: repeat;
+    transform: rotate(-14deg);
+    z-index: -1; 
+    pointer-events: none;
+    opacity: 0.2;
 }
