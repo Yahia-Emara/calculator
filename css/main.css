@@ -15,11 +15,14 @@ body {
 
 header {
     background-color: #30336b;
-    color: aliceblue;
     padding: 1rem;
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+header h1 {
+    color: aliceblue;
 }
 
 footer {
@@ -30,12 +33,12 @@ footer {
     align-items: center;
 }
 
-footer a {
+a {
     color: aliceblue;
     text-decoration: none;
 }
 
-footer a:hover {
+a:hover {
     text-decoration: underline;
 }
 
@@ -57,7 +60,7 @@ main::before {
     left: -30%;
     width: 160%;
     height: 160%;
-    background-image: url("./assets/pattern.svg"), url("./assets/pattern.svg");
+    background-image: url("../assets/pattern.svg"), url("../assets/pattern.svg");
     background-position: 0 0, 5rem 5rem; 
     background-size: 10rem 10rem; 
     background-repeat: repeat;
