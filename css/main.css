@@ -69,3 +69,8 @@ main::before {
     pointer-events: none;
     opacity: 0.2;
 }
+
+p:empty::before {
+  content: "\200b";
+  display: inline-block;
+}
