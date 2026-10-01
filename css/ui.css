@@ -2,15 +2,19 @@ button {
     font-family: monospace;
     padding: 1rem;
     font-size: 1.5rem;
+    background-color: #2d3436;
+    color: aliceblue;
+    flex: 1;
 }
 
 .calc {
-    background-color: #ecf0f1;
+    background-color: #34495e;
+    font-size: 1.5rem;
     padding: 1rem;
+    border-radius: 1rem;
     display: flex;
     flex-direction: column;
     gap: 1rem;
-    font-size: 1.5rem;
 }
 
 .display {
