@@ -41,14 +41,20 @@ const calc = {
                 this.calcResult = "0";
             }
             else if("+-*/".includes(last)){
-                this.num2 = "0";
-                this.calcEquation += "0";
-                this.calcResult = "0";
+                this.num2 = "0.";
+                this.calcEquation += "0.";
+                this.calcResult = "0.";
             }
-            if(this.operand === null) this.num1 += token;
-            else this.num2 += token;
-            this.calcEquation += token;
-            this.calcResult += token;       
+            else if(this.operand === null && this.num1.includes(".") === false) {
+                this.num1 += token;
+                this.calcEquation += token;
+                this.calcResult += token;       
+            }
+            else if(this.operand !== null && this.num2.includes(".") === false){
+                this.num2 += token;
+                this.calcEquation += token;
+                this.calcResult += token;       
+            }
         }
         else if("+-*/".includes(token)){
             if("+-*/".includes(last)){
