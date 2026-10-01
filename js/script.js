@@ -1,5 +1,6 @@
 const equationNode = document.querySelector(".equation");
 const resultNode = document.querySelector(".result");
+const operations = "+*-/^%"
 
 const calc = {
     calcEquation: "",
@@ -13,6 +14,8 @@ const calc = {
         if(this.operand === "-") return this.result = +this.num1 - +this.num2;
         if(this.operand === "*") return this.result = +this.num1 * +this.num2;
         if(this.operand === "/") return this.result = +this.num1 / +this.num2;
+        if(this.operand === "^") return this.result = (+this.num1) ** (+this.num2);
+        if(this.operand === "%") return this.result = (+this.num1) % (+this.num2);
     },
     insertToken(token) {
         const last = this.calcEquation.slice(-1);
@@ -28,7 +31,7 @@ const calc = {
             if(this.operand === null) this.num1 += token;
             else this.num2 += token;
             this.calcEquation += token;
-            if("+-*/".includes(last)) this.calcResult = "";
+            if(operations.includes(last)) this.calcResult = "";
             this.calcResult += token;
         }
         else if(token === '.' && last !== "."){
@@ -40,7 +43,7 @@ const calc = {
                 this.calcEquation = "0";
                 this.calcResult = "0";
             }
-            else if("+-*/".includes(last)){
+            else if(operations.includes(last)){
                 this.num2 = "0.";
                 this.calcEquation += "0.";
                 this.calcResult = "0.";
@@ -56,8 +59,8 @@ const calc = {
                 this.calcResult += token;       
             }
         }
-        else if("+-*/".includes(token)){
-            if("+-*/".includes(last)){
+        else if(operations.includes(token)){
+            if(operations.includes(last)){
                 this.calcEquation = this.calcEquation.slice(0, -1) + token;
                 this.operand = token;
             }
@@ -101,7 +104,7 @@ const calc = {
                 this.calcEquation = this.num1 + this.operand + this.num2 + "=";
                 this.calcResult = this.result;
             }
-            else if("+-*/".includes(last)){
+            else if(operations.includes(last)){
                 this.num2 = this.num1;
                 this.evalRes();
                 this.calcEquation = this.num1 + this.operand + this.num2 + "=";
@@ -121,6 +124,29 @@ const calc = {
                 this.evalRes();
                 this.calcEquation = this.num1 + this.operand + this.num2 + "=";
                 this.calcResult = this.result;
+            }
+        }
+        else if(token === "C"){
+            this.calcEquation = "";
+            this.calcResult = "";
+            this.result = null;
+            this.num1 = "";
+            this.num2 = "";
+            this.operand = null;
+        }
+        else if(token === "E"){
+            if(this.num2 !== ""){
+                this.num2 = "";
+                this.calcResult = "";
+                this.calcEquation = this.num1 + this.operand;
+            }
+            else{
+                this.calcEquation = "";
+                this.calcResult = "";
+                this.result = null;
+                this.num1 = "";
+                this.num2 = "";
+                this.operand = null;
             }
         }
         equationNode.textContent = this.calcEquation;
