@@ -165,7 +165,7 @@ document.addEventListener("click", (e) => {
 document.addEventListener("keydown", (e) => {
     const key = e.key.toUpperCase();
     if(!isNaN(key)) return calc.insertToken(key);
-    if((operations + "=CE").includes(key)) return calc.insertToken(key);
+    if((operations + "=CE.").includes(key)) return calc.insertToken(key);
     if(key === "ENTER") return calc.insertToken('=');
     if(key === "BACKSPACE") return calc.insertToken('E');
     if(key === "ESCAPE") return calc.insertToken('C');
